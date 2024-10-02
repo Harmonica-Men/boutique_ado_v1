@@ -1,9 +1,5 @@
-
-from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView
-from .models import Product
 from django.shortcuts import render, get_object_or_404
-
+from .models import Product
 
 # Create your views here.
 
@@ -19,13 +15,13 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
-class ProductDetailView(DetailView):
-    """ A class-based view to show individual product details """
-    model = Product
-    template_name = 'product_detail.html'
-    context_object_name = 'product'
+def product_detail(request, product_id):
+    """ A view to show individual product details """
 
-    def get_object(self):
-        product_id = self.kwargs.get("product_id")
-        return get_object_or_404(Product, pk=product_id)
+    product = get_object_or_404(Product, pk=product_id)
 
+    context = {
+        'product': product,
+    }
+
+    return render(request, 'products/product_detail.html', context)
