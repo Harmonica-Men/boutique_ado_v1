@@ -21,16 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'b@8bkm3g+ytuidnka08311*^-ax^#e7!*d(qq+k&i65k(botyh'
-# SECRET_KEY = os.environ.get('SECRET_KEY', '')
+SECRET_KEY = 'django-insecure-a-(#qsu^r^$gdy=e)qvtmje-z955-7%2i5ahgovcq0x@7ar6)@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
-# DEBUG = 'DEVELOPMENT' in os.environ
-DEBUG = False
-
-ALLOWED_HOSTS = ['8000-harmonicame-boutiqueado-2cshjau6e59.ws.codeinstitute-ide.net',
-                '.herokuapp.com']
+ALLOWED_HOSTS = ['8000-harmonicame-boutiqueado-2cshjau6e59.ws.codeinstitute-ide.net']
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-harmonicame-boutiqueado-2cshjau6e59.ws.codeinstitute-ide.net']
 
@@ -112,8 +108,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
@@ -126,37 +120,14 @@ LOGIN_REDIRECT_URL = '/'
 WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 
 # Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-
-
-
-
-# Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
-# DATABASES = {
-#      'default': dj_database_url.parse('postgres://uwb4hdjzua9:7p5Hb6Ee1XKE@ep-gentle-mountain-a23bxz6h-pooler.eu-central-1.aws.neon.tech/river_roast_speak_553993')
-#  }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -214,4 +185,11 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-DEFAULT_FROM_EMAIL = 'boutiqueado@example.com'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'filip.vanelslande@gmail.com'
+EMAIL_HOST_PASSWORD = 'kfzl dyus bwek yurb'
+DEFAULT_FORM_EMAIL = 'filip.vanelslande@gmail.com'
